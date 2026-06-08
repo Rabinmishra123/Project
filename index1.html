@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nepal Tourism</title>
+  <link rel="stylesheet" href="1.css">
+   <style>
+    /* :root {
+      --green:   #2d6a4f;
+      --green-lt:#52b788;
+      --orange:  #e76f51;
+      --bg:      #f8f5f0;
+      --white:   #ffffff;
+      --text:    #333333;
+      --muted:   #888888;
+      --radius:  16px;
+    } */
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Nepal<span>Tourism</span></div>
+  <ul>
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#guides">Guides</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="/image/baclground1.jpg" alt="Nepal" />
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Explore <em>Beautiful</em> Nepal</h1>
+    <p>Mountains · Lakes · Culture · Adventure</p>
+    <button class="btn" onclick="document.getElementById('destinations').scrollIntoView({behavior:'smooth'})">Explore Now</button>
+  </div>
+</div>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="sec-label">Where to Go</div>
+  <div class="sec-title">Popular Destinations</div>
+  <p class="sec-desc">From sacred temples to snowy peaks — Nepal has something for every kind of traveller.</p>
+  <div class="dest-grid">
+
+    <div class="card">
+      <div class="card-img-wrap"><img class="card-img" src="/image/pokhara.jpg" alt="Pokhara" /></div>
+      <div class="card-body">
+        <span class="card-tag">Lake City</span>
+        <div class="card-title">Pokhara</div>
+        <div class="card-desc">Serene Phewa Lake, stunning Annapurna views, and the adventure capital of Nepal.</div>
+        <a href="https://en.wikipedia.org/wiki/Pokhara" target="_blank" class="card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap"><img class="card-img" src="/image/mount.webp" alt="Everest" /></div>
+      <div class="card-body">
+        <span class="card-tag">Iconic</span>
+        <div class="card-title">Mount Everest</div>
+        <div class="card-desc">The roof of the world — a dream for trekkers and climbers from every corner of the globe.</div>
+        <a href="https://en.wikipedia.org/wiki/Mount_Everest" target="_blank" class="card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap"><img class="card-img" src="/image/pashupati.webp" alt="Pashupatinath" /></div>
+      <div class="card-body">
+        <span class="card-tag">Sacred</span>
+        <div class="card-title">Pashupatinath Temple</div>
+        <div class="card-desc">Nepal's most sacred Hindu temple — stunning pagoda architecture on the banks of the Bagmati.</div>
+        <a href="https://en.wikipedia.org/wiki/Pashupatinath_Temple" target="_blank" class="card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap"><img class="card-img" src="/image/lumbini.webp" alt="Lumbini" /></div>
+      <div class="card-body">
+        <span class="card-tag">UNESCO</span>
+        <div class="card-title">Lumbini</div>
+        <div class="card-desc">Birthplace of Lord Buddha and a World Heritage Site — a place of profound peace.</div>
+        <a href="https://en.wikipedia.org/wiki/Lumbini" target="_blank" class="card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap"><img class="card-img" src="/image/mustaang.jpg" alt="Mustang" /></div>
+      <div class="card-body">
+        <span class="card-tag">Hidden Gem</span>
+        <div class="card-title">Upper Mustang</div>
+        <div class="card-desc">Desert canyons, cave monasteries, and preserved Tibetan culture in the forbidden kingdom.</div>
+        <a href="https://en.wikipedia.org/wiki/Upper_Mustang" target="_blank" class="card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap"><img class="card-img" src="/image/chitwan.jpg" alt="Chitwan" /></div>
+      <div class="card-body">
+        <span class="card-tag">Wildlife</span>
+        <div class="card-title">Chitwan National Park</div>
+        <div class="card-desc">Nepal's first national park — rhinos, tigers, and thrilling jungle safaris await.</div>
+        <a href="https://en.wikipedia.org/wiki/Chitwan_National_Park" target="_blank" class="card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap"><img class="card-img" src="/image/kathmandu.webp" alt="Kathmandu" /></div>
+      <div class="card-body">
+        <span class="card-tag">Capital</span>
+        <div class="card-title">Kathmandu</div>
+        <div class="card-desc">Ancient temples, vibrant bazaars, and centuries of living culture in the valley capital.</div>
+        <a href="https://en.wikipedia.org/wiki/Kathmandu" target="_blank" class="card-link">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-img-wrap"><img class="card-img" src="/image/rara.webp" alt="Rara Lake" /></div>
+      <div class="card-body">
+        <span class="card-tag">Remote</span>
+        <div class="card-title">Rara Lake</div>
+        <div class="card-desc">Nepal's largest lake — crystal blue waters surrounded by untouched Himalayan wilderness.</div>
+        <a href="https://en.wikipedia.org/wiki/Rara_Lake" target="_blank" class="card-link">Learn more →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GUIDES -->
+<section id="guides">
+  <div class="sec-label">Plan Your Trip</div>
+  <div class="sec-title">Travel Guides</div>
+  <p class="sec-desc">Quick references for popular trips — so you know what to expect before you go.</p>
+  <div class="guide-grid">
+
+    <div class="guide-card">
+      <div class="guide-icon">🏔️</div>
+      <div class="guide-name">Everest Base Camp Trek</div>
+      <div class="guide-row"><span>Duration</span><span>14 Days</span></div>
+      <div class="guide-row"><span>Difficulty</span><span class="badge hard">Hard</span></div>
+      <div class="guide-row"><span>Best Season</span><span>Spring &amp; Autumn</span></div>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-icon">🌄</div>
+      <div class="guide-name">Annapurna Circuit Trek</div>
+      <div class="guide-row"><span>Duration</span><span>10–21 Days</span></div>
+      <div class="guide-row"><span>Difficulty</span><span class="badge moderate">Moderate</span></div>
+      <div class="guide-row"><span>Best Season</span><span>Spring &amp; Autumn</span></div>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-icon">🦏</div>
+      <div class="guide-name">Chitwan Jungle Safari</div>
+      <div class="guide-row"><span>Duration</span><span>2–4 Days</span></div>
+      <div class="guide-row"><span>Difficulty</span><span class="badge easy">Easy</span></div>
+      <div class="guide-row"><span>Best Season</span><span>Oct – March</span></div>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-icon">🏯</div>
+      <div class="guide-name">Kathmandu Valley Tour</div>
+      <div class="guide-row"><span>Duration</span><span>3–5 Days</span></div>
+      <div class="guide-row"><span>Difficulty</span><span class="badge easy">Easy</span></div>
+      <div class="guide-row"><span>Best Season</span><span>Year Round</span></div>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-icon">🏞️</div>
+      <div class="guide-name">Shreeantu Ilam</div>
+      <div class="guide-row"><span>Duration</span><span>2 Days</span></div>
+      <div class="guide-row"><span>Difficulty</span><span class="badge easy">Easy</span></div>
+      <div class="guide-row"><span>Best Season</span><span>Sept – Oct</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="sec-label">Visual Journey</div>
+  <div class="sec-title">Gallery</div>
+  <p class="sec-desc">A peek at the landscapes and moments that await you in Nepal.</p>
+  <div class="gallery-grid">
+    <div class="gitem big" onclick="lb(this)"><img src="/image/pathivara.jpg" alt="" /></div>
+    <div class="gitem" onclick="lb(this)"><img src="/image/janaki mandir.webp" alt="" /></div>
+    <div class="gitem" onclick="lb(this)"><img src="/image/pokhara.jpg" alt="" /></div>
+    <div class="gitem" onclick="lb(this)"><img src="/image/shreeantu.webp" alt="" /></div>
+    <div class="gitem" onclick="lb(this)"><img src="/image/chitwan.jpg" alt="" /></div>
+    <div class="gitem big" onclick="lb(this)"><img src="/image/syambunath.webp" alt="" /></div>
+    <div class="gitem" onclick="lb(this)"><img src="/image/Annapurna.jpg" alt="" /></div>
+    <div class="gitem" onclick="lb(this)"><img src="/image/mustaang.jpg" alt="" /></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX  -->
+<div class="lb" id="lightbox" onclick="closeLb()">
+  <button class="lb-x" onclick="closeLb()">✕</button>
+  <img id="lbimg" src="" alt="" />
+</div>
+
+ <!-- CONTACT -->
+<section id="contact">
+  <div class="sec-label">Get in Touch</div>
+  <div class="sec-title">Contact Us</div>
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <h3>Plan your Nepal journey</h3>
+      <p>Have questions about trekking, permits, or the best time to visit? We'd love to help you plan the perfect trip.</p>
+      <div class="cinfo"><div class="cinfo-icon">📍</div><span>Birtamode, jhapa, Nepal</span></div>
+      <div class="cinfo"><div class="cinfo-icon">📞</div><span>+977 1 4123456</span></div>
+      <div class="cinfo"><div class="cinfo-icon">✉️</div><span>@birtanepaltourism.com</span></div>
+    </div>
+    <form class="cform" id="contactForm">
+      <input type="text" placeholder="Your Name" required />
+      <input type="tel" placeholder="Phone Number" />
+      <input type="email" placeholder="Email Address" required />
+      <textarea placeholder="Your message…"></textarea>
+      <button class="btn" type="submit">Send Message</button>
+      <div class="ok" id="ok">✓ Message sent! Thank you for the message….</div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Nepal Tourism</strong> — Discover the Himalayas<br/>
+  <span style="font-size:.8rem;margin-top:6px;display:block;">© 2026 · Made with ❤️ for Nepal</span>
+</footer>
+
+<script>
+  function lb(el) {
+    document.getElementById('lbimg').src = el.querySelector('img').src;
+    document.getElementById('lightbox').classList.add('on');
+  }
+  function closeLb() { document.getElementById('lightbox').classList.remove('on'); }
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('ok').style.display = 'block';
+    this.reset();
+  });
+</script>
+</body>
+</html>
