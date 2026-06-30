@@ -1,0 +1,62 @@
+:root {
+      --mauve:    #b56870;
+      --blush:    #f2d4d4;
+      --cream:    #fce8e8;
+      --ink:      #1a1010;
+      --muted:    #5a3a3a;
+      --white:    #ffffff;
+    }
+        body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+   nav {
+      background: var(--mauve);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+        .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .logo-name {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .logo-sub {
+      font-family: 'Dancing Script', cursive;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.78);
+      letter-spacing: 0.08em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: bold;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      position: relative;
+      padding-bottom: 3px;
+      transition: opacity 0.2s;
+      justify-content: center;
+    }
+    .nav-links a:hover{
+        color:black;
+    }
