@@ -1,4 +1,5 @@
-:root {
+
+    :root {
       --mauve:    #b56870;
       --blush:    #f2d4d4;
       --cream:    #fce8e8;
@@ -11,6 +12,7 @@
       background: var(--cream);
       color: var(--ink);
       overflow-x: hidden;
+    margin: auto;
     }
    nav {
       background: var(--mauve);
@@ -22,6 +24,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      max-width: 100%;
     }
         .logo {
       display: flex;
@@ -48,7 +51,7 @@
     .nav-links a {
       text-decoration: none;
       font-size: 0.82rem;
-      font-weight: bold;
+      font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--white);
@@ -59,4 +62,57 @@
     }
     .nav-links a:hover{
         color:black;
+    }
+       .hero {
+      background: var(--blush);
+      min-height: calc(100vh - 64px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 64px 10px 0px 80px;
+      overflow: hidden;
+      position: relative;}
+      
+  .hero-headline em {
+      font-style: normal;
+      color: var(--mauve);
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--ink);
+      text-transform: uppercase;
+      margin-bottom: 22px;
+       /* opacity: 0; */
+      /* transform: translateY(20px);
+      animation: fadeUp 0.7s ease 0.25s forwards; */
+    }
+        .hero-body {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 36px;
+     
+      transform: translateY(16px);
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+ .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 100%;
+      padding-top: 40px;
+      /* opacity: 0; */
+      transform: scale(0.96) translateY(12px);
+      animation: fadeScale 0.9s ease 0.35s forwards;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 580px;
+      object-fit: contain;
+      filter: drop-shadow(0 24px 48px rgba(120,60,60,0.18));
     }
