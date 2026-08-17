@@ -1,11 +1,11 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html lang="en">
  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cafe</title>
     <link rel="stylesheet" href="cafe.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@600&family=Inter:wght@400;500&family=Fraunces:ital,wght@0,500;1,500&display=swap" rel="stylesheet"/>
  </head>
  <body>
     <!--nav-->
@@ -17,11 +17,11 @@
     <ul class="nav-links">
       <li><a href="#">Home</a></li>
       <li><a href="#">Menu</a></li>
-      <li><a href="#">Contact</a></li>
       <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
     </ul>
     </nav>
-
+ 
     <!-- HERO -->
   <section class="hero">
     <div class="hero-text">
@@ -35,11 +35,129 @@
         and served fresh every day.
       </p>
     </div>
-    
     <div class="hero-image">
-      
       <img src="/image/coffe1-removebg-preview.png">
-    </div>
+    </div>   
   </section>
+  
+   <!-- MENU -->
+  <section id="menu">
+    <h2 class="menu-title">Our Special Menu</h2>
+ 
+    <!-- COFFEES -->
+    <p class="menu-category-label">☕ Coffees</p>
+    <div class="menu-grid" id="coffees-grid"></div>
+ 
+    <!-- FOOD -->
+    <p class="menu-category-label">🥪 Food & Snacks</p>
+    <div class="menu-grid" id="food-grid"></div>
+  </section>
+ 
+  <!-- CART BAR -->
+  <div class="cart-bar" id="cartBar">
+    <div class="cart-bar-info">
+      🛒 <span id="cartCount">0</span> item(s)
+      <strong>$<span id="cartTotal">0</span></strong>
+    </div>
+    <button class="cart-checkout" onclick="alert('Proceeding to checkout…')">Checkout</button>
+  </div>
+ 
+  <script>
+    const coffees = [
+      { id: 'cap',  name: 'Cappuccino', price: 75, emoji: '☕' },
+      { id: 'lat',  name: 'Latte',      price: 50, emoji: '🥛' },
+      { id: 'esp',  name: 'Espresso',   price: 15, emoji: '⚡' },
+      { id: 'ins',  name: 'Instant',    price: 8,  emoji: '⏱️' },
+      { id: 'ame',  name: 'Americano',  price: 9,  emoji: '🖤' },
+      { id: 'moc',  name: 'Mocca',      price: 6,  emoji: '🍫' },
+    ];
+ 
+    const food = [
+      { id: 'che', name: 'Cheese Sandwich', price: 10, emoji: '🧀' },
+      { id: 'tun', name: 'Tuna Sandwich',   price: 9,  emoji: '🥪' },
+      { id: 'esp2',name: 'Espresso Cake',   price: 15, emoji: '🎂' },
+      { id: 'cro', name: 'Croissant',       price: 15, emoji: '🥐' },
+      { id: 'muf', name: 'Muffin',          price: 15, emoji: '🧁' },
+      { id: 'coo', name: 'Cookie',          price: 15, emoji: '🍪' },
+    ];
+ 
+    const cart = {};
+ 
+    function updateCart() {
+      let count = 0, total = 0;
+      for (const [id, qty] of Object.entries(cart)) {
+        const item = [...coffees, ...food].find(i => i.id === id);
+        if (item && qty > 0) { count += qty; total += item.price * qty; }
+      }
+      document.getElementById('cartCount').textContent = count;
+      document.getElementById('cartTotal').textContent = total;
+      const bar = document.getElementById('cartBar');
+      bar.classList.toggle('visible', count > 0);
+    }
+ 
+    function change(id, delta) {
+      cart[id] = Math.max(0, (cart[id] || 0) + delta);
+      const display = document.getElementById('qty-' + id);
+      if (display) display.textContent = cart[id] || 0;
+      updateCart();
+    }
+ 
+    function renderGrid(items, gridId) {
+      const grid = document.getElementById(gridId);
+      grid.innerHTML = items.map(item => `
+        <div class="menu-card">
+          <div class="menu-card-img-placeholder">${item.emoji}</div>
+          <div class="menu-card-body">
+            <div class="menu-card-name">${item.name}</div>
+            <div class="menu-card-price">$ ${item.price}</div>
+          </div>
+          <div class="menu-card-footer">
+            <button class="qty-btn" onclick="change('${item.id}', -1)">−</button>
+            <span class="qty-display" id="qty-${item.id}">0</span>
+            <button class="qty-btn" onclick="change('${item.id}', 1)">+</button>
+          </div>
+        </div>
+      `).join('');
+    }
+ 
+    renderGrid(coffees, 'coffees-grid');
+    renderGrid(food, 'food-grid');
+  </script>
+ 
+ 
+ <section class="about">
+  <span>☕</span>
+  <h1>About Liceria Coffee Shop</h1>
+  <p>We're a small coffee shop that believes in simple things done well — good beans, warm bread, and a seat that's yours for as long as you need it.</p>
+  <p>Every cup is made with care, right here, every day. No rush, no fuss — just coffee made the way it should be.</p>
+  <p class="sign">Come in, sit down, stay a while.</p>
+</section><br>
+ <div class="FORM">
+<form id="contactForm">
+  <h2>Contact Us</h2>
+ 
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" required>
+ 
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+ 
+  <label for="description">Description</label>
+  <textarea id="description" name="description" required></textarea>
+ 
+  <div class="buttons">
+    <button type="submit" class="submit">Submit</button>
+    <button type="reset" class="cancel">Cancel</button>
+  </div>
+</form>
+</div>
+ 
+<footer>
+  <p>📍 Birtamode,Jhapa</p>
+  <p>📞 phone: <a href="tel:9800233322">9800233322</a></p>
+   <p>✉️ Email: <a href="mailto:liceriacafe2@gmail.com">liceriacafe2@gmail.com</a></p>
+ 
+   <p class="copyright">&copy; 2026 Liceria Cafe. All rights reserved.</p>
+</footer>
  </body>
  </html>
