@@ -1,163 +1,1192 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cafe</title>
-    <link rel="stylesheet" href="cafe.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@600&family=Inter:wght@400;500&family=Fraunces:ital,wght@0,500;1,500&display=swap" rel="stylesheet"/>
- </head>
- <body>
-    <!--nav-->
-    <nav>
-    <div class="logo">
-      <span class="logo-name">liceria</span>
-      <span class="logo-sub">coffee shop</span>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chiya Adda - Digital Menu</title>
+<style>
+/* Chiya Adda - Digital Menu - style.css */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* ---------- Theme 1 : Warm ---------- */
+body[data-theme="theme1"][data-mode="light"] {
+  --bg: #fdf6ec;
+  --card-bg: #ffffff;
+  --text: #3b2318;
+  --primary: #8a3324;
+  --accent: #c9922f;
+  --border: #e6d6b8;
+}
+body[data-theme="theme1"][data-mode="dark"] {
+  --bg: #241512;
+  --card-bg: #34211d;
+  --text: #f2e6d8;
+  --primary: #d99a4e;
+  --accent: #d99a4e;
+  --border: #4d3530;
+}
+body[data-theme="theme1"] {
+  --font-heading: Georgia, "Times New Roman", serif;
+  --card-radius: 14px;
+  --chip-radius: 20px;
+  --img-radius: 50%;
+}
+
+/* ---------- Theme 2 : Cool ---------- */
+body[data-theme="theme2"][data-mode="light"] {
+  --bg: #f0f6f8;
+  --card-bg: #ffffff;
+  --text: #16303a;
+  --primary: #1f6f7a;
+  --accent: #2f9e8f;
+  --border: #cfe3e6;
+}
+body[data-theme="theme2"][data-mode="dark"] {
+  --bg: #101d21;
+  --card-bg: #17282c;
+  --text: #e2f1f2;
+  --primary: #4fc3b0;
+  --accent: #4fc3b0;
+  --border: #2b3d41;
+}
+body[data-theme="theme2"] {
+  --font-heading: Verdana, Geneva, sans-serif;
+  --card-radius: 4px;
+  --chip-radius: 4px;
+  --img-radius: 4px;
+}
+
+/* ---------- Theme 3 : Bold ---------- */
+body[data-theme="theme3"][data-mode="light"] {
+  --bg: #f7f2fb;
+  --card-bg: #ffffff;
+  --text: #2c1e3a;
+  --primary: #7a2f9e;
+  --accent: #e0546d;
+  --border: #e2d5ee;
+}
+body[data-theme="theme3"][data-mode="dark"] {
+  --bg: #1c1226;
+  --card-bg: #291a35;
+  --text: #f0e6f7;
+  --primary: #c77bde;
+  --accent: #e0546d;
+  --border: #3c2a4a;
+}
+body[data-theme="theme3"] {
+  --font-heading: "Trebuchet MS", Tahoma, sans-serif;
+  --card-radius: 0px;
+  --chip-radius: 0px;
+  --img-radius: 0px;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  background-color: var(--card-bg);
+  border-bottom: 2px solid var(--border);
+  padding: 15px 20px;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.site-title {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.4rem;
+  font-family: var(--font-heading);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-select,
+.mode-toggle {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background-color: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* ---------- Welcome section ---------- */
+
+.welcome {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 20px 10px;
+}
+
+.welcome h2 {
+  margin: 0 0 8px;
+  color: var(--primary);
+  font-family: var(--font-heading);
+}
+
+.welcome p {
+  margin: 0;
+  color: var(--text);
+}
+
+/* ---------- Controls ---------- */
+
+.controls {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15px 20px;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background-color: var(--card-bg);
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cat-btn {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--chip-radius);
+  background-color: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+body[data-theme="theme3"] .cat-btn {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.75rem;
+  border-width: 2px;
+  letter-spacing: 0.03em;
+}
+
+body[data-theme="theme2"] .cat-btn {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.cat-btn.active {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+/* ---------- Menu grid ---------- */
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 20px 90px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.menu-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-card img {
+  width: 70px;
+  height: 70px;
+  margin: 15px auto 0;
+  display: block;
+  border-radius: var(--img-radius);
+}
+
+.menu-card-body {
+  padding: 12px 15px 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-card-cat {
+  font-size: 0.7rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin: 0 0 4px;
+}
+
+.menu-card h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  color: var(--text);
+  font-family: var(--font-heading);
+}
+
+.menu-card p {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  color: var(--text);
+  flex: 1;
+}
+
+.menu-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: bold;
+  color: var(--primary);
+}
+
+/* Theme 1 (Warm): classic vertical card, circular image, soft look - default above */
+
+/* Theme 2 (Cool): horizontal list-style card, square image on the left */
+body[data-theme="theme2"] .menu-card {
+  flex-direction: row;
+  align-items: stretch;
+  border-left: 4px solid var(--primary);
+}
+body[data-theme="theme2"] .menu-card img {
+  width: 64px;
+  height: 64px;
+  margin: 15px 0 15px 15px;
+  flex-shrink: 0;
+}
+body[data-theme="theme2"] .menu-card-body {
+  padding: 12px 15px;
+}
+body[data-theme="theme2"] .menu-card h3 {
+  font-size: 0.95rem;
+}
+body[data-theme="theme2"] .price {
+  font-size: 0.9rem;
+}
+
+/* Theme 3 (Bold): sharp square card, big image banner on top, thick border */
+body[data-theme="theme3"] .menu-card {
+  border-width: 3px;
+}
+body[data-theme="theme3"] .menu-card img {
+  width: 100%;
+  height: 110px;
+  margin: 0;
+  background-color: var(--bg);
+  padding: 10px 0;
+}
+body[data-theme="theme3"] .menu-card h3 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+body[data-theme="theme3"] .price {
+  display: inline-block;
+  background-color: var(--primary);
+  color: #fff;
+  padding: 3px 10px;
+  font-size: 0.85rem;
+}
+
+.status {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 10px;
+}
+
+.status.available {
+  background-color: #d9f0d9;
+  color: #256029;
+}
+
+.status.unavailable {
+  background-color: #f5dada;
+  color: #8a2727;
+}
+
+.no-results {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text);
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  background-color: var(--card-bg);
+  border-top: 2px solid var(--border);
+  text-align: center;
+  padding: 15px;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+/* ---------- Modal ---------- */
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal {
+  background-color: var(--card-bg);
+  border-radius: var(--card-radius);
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+}
+
+body[data-theme="theme3"] .modal {
+  border: 3px solid var(--primary);
+}
+
+.modal h3 {
+  font-family: var(--font-heading);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.modal-image {
+  width: 100px;
+  height: 100px;
+  margin: 10px auto;
+  border-radius: var(--img-radius);
+}
+
+.modal-category {
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin: 0 0 5px;
+}
+
+.modal-price {
+  font-weight: bold;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+/* ---------- Quantity stepper ---------- */
+
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background-color: var(--card-bg);
+  color: var(--primary);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qty-btn:hover {
+  background-color: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.qty-value {
+  min-width: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ---------- Floating order bar ---------- */
+
+.order-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--primary);
+  color: #fff;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 90;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+}
+
+.order-bar-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.order-bar-info span:last-child {
+  font-weight: bold;
+  font-size: 1.05rem;
+}
+
+.order-bar-btn {
+  background-color: #fff;
+  color: var(--primary);
+  border: none;
+  border-radius: var(--chip-radius);
+  padding: 10px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* ---------- Order summary modal ---------- */
+
+.order-modal {
+  max-width: 440px;
+  text-align: left;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.order-modal h3 {
+  font-family: var(--font-heading);
+  margin: 0 0 15px;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.order-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.order-line-img {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--img-radius);
+}
+
+.order-line-body {
+  flex: 1;
+}
+
+.order-line-name {
+  margin: 0 0 3px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.order-line-price {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.order-total-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding-top: 10px;
+  border-top: 2px solid var(--border);
+  margin-bottom: 15px;
+}
+
+.order-clear-btn {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--chip-radius);
+  background-color: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+  .menu-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .menu-card img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .site-title {
+    font-size: 1.2rem;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  body[data-theme="theme2"] .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-theme="theme2"] .menu-card img {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+@media (max-width: 380px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .order-bar-btn {
+    width: 100%;
+  }
+}
+
+</style>
+</head>
+<body data-theme="theme1" data-mode="light">
+
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTIwIDEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSI1OCIgZmlsbD0iIzdBMUUyOCIgc3Ryb2tlPSIjQzlBMjI3IiBzdHJva2Utd2lkdGg9IjMiLz4KICA8cGF0aCBkPSJNMzAgNzIgTDYwIDQwIEw5MCA3MiBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNDOUEyMjciIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0zOCA3MiBMNjAgNTAgTDgyIDcyIFoiIGZpbGw9IiNGMkU5REEiIG9wYWNpdHk9IjAuOSIvPgogIDxyZWN0IHg9IjQyIiB5PSI3OCIgd2lkdGg9IjM2IiBoZWlnaHQ9IjE0IiByeD0iMyIgZmlsbD0iI0M5QTIyNyIvPgogIDxwYXRoIGQ9Ik03OCA4MiBxMTAgMCAxMCA4IHEwIDggLTEwIDgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0M5QTIyNyIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHRleHQgeD0iNjAiIHk9IjEwNiIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjRjJFOURBIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXdlaWdodD0iYm9sZCI+Q0hJWUEgQUREQTwvdGV4dD4KPC9zdmc+Cg==" alt="Chiya Adda logo" class="logo">
+        <h1 class="site-title">Chiya Adda</h1>
+      </div>
+
+      <nav class="nav">
+        <select id="theme-select" class="theme-select" aria-label="Choose theme">
+          <option value="theme1">Theme 1</option>
+          <option value="theme2">Theme 2</option>
+          <option value="theme3">Theme 3</option>
+        </select>
+
+        <button id="mode-toggle" class="mode-toggle" type="button">🌙 Dark Mode</button>
+      </nav>
     </div>
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Menu</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-    </nav>
- 
-    <!-- HERO -->
-  <section class="hero">
-    <div class="hero-text">
-       <h1 class="hero-headline">
-        "Freshly Brewed<br>
-        <em>Happiness</em><br>
-        In Every Cup."
-      </h1>
-      <p class="hero-body">
-        Experience premium coffee, handcrafted with passion<br>
-        and served fresh every day.
-      </p>
-    </div>
-    <div class="hero-image">
-      <img src="/image/coffe1-removebg-preview.png">
-    </div>   
+  </header>
+
+  <section class="welcome">
+    <h2>Welcome to Chiya Adda</h2>
+    <p>A small tea house and kitchen in Kathmandu. Browse our menu below.</p>
   </section>
-  
-   <!-- MENU -->
-  <section id="menu">
-    <h2 class="menu-title">Our Special Menu</h2>
- 
-    <!-- COFFEES -->
-    <p class="menu-category-label">☕ Coffees</p>
-    <div class="menu-grid" id="coffees-grid"></div>
- 
-    <!-- FOOD -->
-    <p class="menu-category-label">🥪 Food & Snacks</p>
-    <div class="menu-grid" id="food-grid"></div>
-  </section>
- 
-  <!-- CART BAR -->
-  <div class="cart-bar" id="cartBar">
-    <div class="cart-bar-info">
-      🛒 <span id="cartCount">0</span> item(s)
-      <strong>$<span id="cartTotal">0</span></strong>
+
+  <section class="controls">
+    <input type="search" id="search-input" class="search-box" placeholder="Search menu items...">
+
+    <div class="categories" id="category-filter">
+      <!-- category buttons added by script.js -->
     </div>
-    <button class="cart-checkout" onclick="alert('Proceeding to checkout…')">Checkout</button>
+  </section>
+
+  <main>
+    <div class="menu-grid" id="menu-grid">
+      <!-- menu items added by script.js -->
+    </div>
+    <p class="no-results" id="no-results" hidden>No items found.</p>
+  </main>
+
+  <footer class="footer">
+    <p>Chiya Adda, Kathmandu &middot; Open daily 6 AM - 9 PM</p>
+  </footer>
+
+  <!-- Floating order bar -->
+  <div class="order-bar" id="order-bar" hidden>
+    <div class="order-bar-info">
+      <span id="order-bar-count">0 items</span>
+      <span id="order-bar-total">Rs. 0</span>
+    </div>
+    <button class="order-bar-btn" id="order-bar-btn" type="button">View Order</button>
   </div>
- 
-  <script>
-    const coffees = [
-      { id: 'cap',  name: 'Cappuccino', price: 75, emoji: '☕' },
-      { id: 'lat',  name: 'Latte',      price: 50, emoji: '🥛' },
-      { id: 'esp',  name: 'Espresso',   price: 15, emoji: '⚡' },
-      { id: 'ins',  name: 'Instant',    price: 8,  emoji: '⏱️' },
-      { id: 'ame',  name: 'Americano',  price: 9,  emoji: '🖤' },
-      { id: 'moc',  name: 'Mocca',      price: 6,  emoji: '🍫' },
-    ];
- 
-    const food = [
-      { id: 'che', name: 'Cheese Sandwich', price: 10, emoji: '🧀' },
-      { id: 'tun', name: 'Tuna Sandwich',   price: 9,  emoji: '🥪' },
-      { id: 'esp2',name: 'Espresso Cake',   price: 15, emoji: '🎂' },
-      { id: 'cro', name: 'Croissant',       price: 15, emoji: '🥐' },
-      { id: 'muf', name: 'Muffin',          price: 15, emoji: '🧁' },
-      { id: 'coo', name: 'Cookie',          price: 15, emoji: '🍪' },
-    ];
- 
-    const cart = {};
- 
-    function updateCart() {
-      let count = 0, total = 0;
-      for (const [id, qty] of Object.entries(cart)) {
-        const item = [...coffees, ...food].find(i => i.id === id);
-        if (item && qty > 0) { count += qty; total += item.price * qty; }
-      }
-      document.getElementById('cartCount').textContent = count;
-      document.getElementById('cartTotal').textContent = total;
-      const bar = document.getElementById('cartBar');
-      bar.classList.toggle('visible', count > 0);
-    }
- 
-    function change(id, delta) {
-      cart[id] = Math.max(0, (cart[id] || 0) + delta);
-      const display = document.getElementById('qty-' + id);
-      if (display) display.textContent = cart[id] || 0;
-      updateCart();
-    }
- 
-    function renderGrid(items, gridId) {
-      const grid = document.getElementById(gridId);
-      grid.innerHTML = items.map(item => `
-        <div class="menu-card">
-          <div class="menu-card-img-placeholder">${item.emoji}</div>
-          <div class="menu-card-body">
-            <div class="menu-card-name">${item.name}</div>
-            <div class="menu-card-price">$ ${item.price}</div>
-          </div>
+
+  <!-- Item Detail Modal -->
+  <div class="modal-overlay" id="modal-overlay" hidden style="display:none;">
+    <div class="modal">
+      <button class="modal-close" id="modal-close" type="button">✕</button>
+      <img src="" alt="" id="modal-image" class="modal-image">
+      <p class="modal-category" id="modal-category"></p>
+      <h3 id="modal-name"></h3>
+      <p id="modal-desc"></p>
+      <p class="modal-price" id="modal-price"></p>
+      <p class="modal-status" id="modal-status"></p>
+      <div class="qty-row" id="modal-qty-row">
+        <button class="qty-btn" id="modal-qty-minus" type="button" aria-label="Decrease quantity">−</button>
+        <span class="qty-value" id="modal-qty-value">0</span>
+        <button class="qty-btn" id="modal-qty-plus" type="button" aria-label="Increase quantity">+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Summary Modal -->
+  <div class="modal-overlay" id="order-modal-overlay" hidden style="display:none;">
+    <div class="modal order-modal">
+      <button class="modal-close" id="order-modal-close" type="button">✕</button>
+      <h3>Your Order</h3>
+      <div class="order-list" id="order-list"></div>
+      <p class="no-results" id="order-empty" hidden>No items added yet.</p>
+      <div class="order-total-row">
+        <span>Total</span>
+        <span id="order-grand-total">Rs. 0</span>
+      </div>
+      <button class="order-clear-btn" id="order-clear-btn" type="button">Clear Order</button>
+    </div>
+  </div>
+<script>
+const ICONS = {
+  main: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzdBMUUyOCIgb3BhY2l0eT0iMC4xMiIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwNSIgcj0iNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzdBMUUyOCIgc3Ryb2tlLXdpZHRoPSI4Ii8+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTA1IiByPSIzMCIgZmlsbD0iIzdBMUUyOCIgb3BhY2l0eT0iMC41Ii8+PHJlY3QgeD0iOTUiIHk9IjMwIiB3aWR0aD0iMTAiIGhlaWdodD0iNTAiIGZpbGw9IiM3QTFFMjgiLz48cmVjdCB4PSIxMzAiIHk9IjMwIiB3aWR0aD0iMTAiIGhlaWdodD0iNTAiIGZpbGw9IiM3QTFFMjgiLz4KPC9zdmc+Cg==",
+  hotdrinks: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzhBNEIyRSIgb3BhY2l0eT0iMC4xMiIvPgogIDxyZWN0IHg9IjU1IiB5PSI4MCIgd2lkdGg9IjgwIiBoZWlnaHQ9IjU1IiByeD0iOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOEE0QjJFIiBzdHJva2Utd2lkdGg9IjYiLz48cGF0aCBkPSJNMTM1IDkwIHEyMCAwIDIwIDIwIHEwIDIwIC0yMCAyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOEE0QjJFIiBzdHJva2Utd2lkdGg9IjYiLz48cGF0aCBkPSJNNzUgNzAgcS02IC0xNCA0IC0yNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOEE0QjJFIiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJNMTAwIDcwIHEtNiAtMTQgNCAtMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhBNEIyRSIgc3Ryb2tlLXdpZHRoPSI0Ii8+Cjwvc3ZnPgo=",
+  salads: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzRDN0EzRSIgb3BhY2l0eT0iMC4xMiIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjExMCIgcj0iNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzRDN0EzRSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTcwIDk1IHEzMCAtMjUgNjAgMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNEM3QTNFIiBzdHJva2Utd2lkdGg9IjQiLz48Y2lyY2xlIGN4PSI4NSIgY3k9IjEwMCIgcj0iNSIgZmlsbD0iIzRDN0EzRSIvPjxjaXJjbGUgY3g9IjExNSIgY3k9IjEwNSIgcj0iNSIgZmlsbD0iIzRDN0EzRSIvPjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEyMCIgcj0iNSIgZmlsbD0iIzRDN0EzRSIvPgo8L3N2Zz4K",
+  momo: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0M5NjIyQiIgb3BhY2l0eT0iMC4xMiIvPgogIDxlbGxpcHNlIGN4PSIxMDAiIGN5PSIxMTUiIHJ4PSI2MCIgcnk9IjM4IiBmaWxsPSIjQzk2MjJCIi8+PHBhdGggZD0iTTQwIDExNSBRMTAwIDYwIDE2MCAxMTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0M5NjIyQiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PGNpcmNsZSBjeD0iMTAwIiBjeT0iODAiIHI9IjYiIGZpbGw9IiNDOTYyMkIiLz4KPC9zdmc+Cg==",
+  colddrinks: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzJFN0E4QSIgb3BhY2l0eT0iMC4xMiIvPgogIDxwYXRoIGQ9Ik03MCA1NSBoNjAgbC0xMCA5MCBoLTQwIHoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzJFN0E4QSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGxpbmUgeDE9IjY1IiB5MT0iNTUiIHgyPSIxMzUiIHkyPSI1NSIgc3Ryb2tlPSIjMkU3QThBIiBzdHJva2Utd2lkdGg9IjYiLz48bGluZSB4MT0iODAiIHkxPSI5MCIgeDI9IjEyMCIgeTI9IjkwIiBzdHJva2U9IiMyRTdBOEEiIHN0cm9rZS13aWR0aD0iNCIvPgo8L3N2Zz4K",
+  soups: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0I0NTUyRiIgb3BhY2l0eT0iMC4xMiIvPgogIDxwYXRoIGQ9Ik01MCA5MCBoMTAwIHYyMCBhNTAgNTAgMCAwIDEgLTEwMCAwIHoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0I0NTUyRiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTg1IDYwIHEtOCAtMTIgMCAtMjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0I0NTUyRiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHBhdGggZD0iTTExNSA2MCBxLTggLTEyIDAgLTIyIiBmaWxsPSJub25lIiBzdHJva2U9IiNCNDU1MkYiIHN0cm9rZS13aWR0aD0iNCIvPjxyZWN0IHg9IjE1MCIgeT0iOTUiIHdpZHRoPSIxNiIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iI0I0NTUyRiIvPgo8L3N2Zz4K",
+  breakfast: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0U4QTMzRCIgb3BhY2l0eT0iMC4xMiIvPgogIDxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iNTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U4QTMzRCIgc3Ryb2tlLXdpZHRoPSI2Ii8+PGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSIyMCIgZmlsbD0iI0U4QTMzRCIvPjxsaW5lIHgxPSI2MCIgeTE9IjYwIiB4Mj0iMTQwIiB5Mj0iMTQwIiBzdHJva2U9IiNFOEEzM0QiIHN0cm9rZS13aWR0aD0iNiIvPjxsaW5lIHgxPSIxNDAiIHkxPSI2MCIgeDI9IjYwIiB5Mj0iMTQwIiBzdHJva2U9IiNFOEEzM0QiIHN0cm9rZS13aWR0aD0iNiIvPgo8L3N2Zz4K",
+  desserts: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0E2NDM3QSIgb3BhY2l0eT0iMC4xMiIvPgogIDxwYXRoIGQ9Ik01NSAxMzAgaDkwIGwtMTAgLTE1IGgtNzAgeiIgZmlsbD0iI0E2NDM3QSIgb3BhY2l0eT0iMC44NSIvPjxwYXRoIGQ9Ik01NSAxMzAgcTQ1IDI1IDkwIDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0E2NDM3QSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PGNpcmNsZSBjeD0iMTAwIiBjeT0iOTUiIHI9IjgiIGZpbGw9IiNBNjQzN0EiLz48bGluZSB4MT0iMTAwIiB5MT0iOTUiIHgyPSIxMDAiIHkyPSI3MCIgc3Ryb2tlPSIjQTY0MzdBIiBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg==",
+  snacks: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI0Q5N0EyQSIgb3BhY2l0eT0iMC4xMiIvPgogIDxwYXRoIGQ9Ik02MCAxNDAgTDEwMCA1NSBMMTQwIDE0MCBaIiBmaWxsPSJub25lIiBzdHJva2U9IiNEOTdBMkEiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxsaW5lIHgxPSI3MiIgeTE9IjExMiIgeDI9IjEyOCIgeTI9IjExMiIgc3Ryb2tlPSIjRDk3QTJBIiBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg==",
+  newari: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzhDM0I0QSIgb3BhY2l0eT0iMC4xMiIvPgogIDxyZWN0IHg9IjQ1IiB5PSI3MCIgd2lkdGg9IjExMCIgaGVpZ2h0PSI3MCIgcng9IjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhDM0I0QSIgc3Ryb2tlLXdpZHRoPSI2Ii8+PGxpbmUgeDE9IjQ1IiB5MT0iOTUiIHgyPSIxNTUiIHkyPSI5NSIgc3Ryb2tlPSIjOEMzQjRBIiBzdHJva2Utd2lkdGg9IjQiLz48bGluZSB4MT0iODAiIHkxPSI3MCIgeDI9IjgwIiB5Mj0iMTQwIiBzdHJva2U9IiM4QzNCNEEiIHN0cm9rZS13aWR0aD0iNCIvPjxsaW5lIHgxPSIxMjAiIHkxPSI3MCIgeDI9IjEyMCIgeTI9IjE0MCIgc3Ryb2tlPSIjOEMzQjRBIiBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg==",
+};
+
+/* Chiya Adda - Digital Menu - script.js */
+
+/* ---------- Menu data: 10 categories x 5 items ---------- */
+
+const categories = [
+  { id: "breakfast", label: "Breakfast", icon: "" },
+  { id: "momo", label: "Momo", icon: "" },
+  { id: "main", label: "Main Course", icon: "" },
+  { id: "newari", label: "Newari Khaja", icon: "" },
+  { id: "snacks", label: "Snacks", icon: "" },
+  { id: "soups", label: "Soups", icon: "" },
+  { id: "salads", label: "Salads", icon: "" },
+  { id: "hotdrinks", label: "Hot Drinks", icon: "" },
+  { id: "colddrinks", label: "Cold Drinks", icon: "" },
+  { id: "desserts", label: "Desserts", icon: "" },
+];
+
+const menuItems = [
+  { id: 1, category: "breakfast", name: "Tibetan Bread & Honey", desc: "Fried puffed bread with local honey.", price: 180, available: true },
+  { id: 2, category: "breakfast", name: "Sel Roti Plate", desc: "Rice bread with aloo tarkari.", price: 150, available: true },
+  { id: 3, category: "breakfast", name: "Masala Omelette", desc: "Egg omelette with onion and chilli.", price: 160, available: true },
+  { id: 4, category: "breakfast", name: "Chiya & Khapse", desc: "Milk tea with fried pastry twists.", price: 140, available: false },
+  { id: 5, category: "breakfast", name: "Dhindo Bowl", desc: "Buckwheat porridge with a fried egg.", price: 190, available: true },
+
+  { id: 6, category: "momo", name: "Steam Chicken Momo", desc: "10 pcs with tomato achar.", price: 220, available: true },
+  { id: 7, category: "momo", name: "Jhol Momo", desc: "Buff momo in sesame jhol soup.", price: 240, available: true },
+  { id: 8, category: "momo", name: "Kothey Momo", desc: "Pan-seared veg momo.", price: 200, available: true },
+  { id: 9, category: "momo", name: "Cheese Corn Momo", desc: "Cheese and sweet corn filling.", price: 260, available: true },
+  { id: 10, category: "momo", name: "Chilli Momo", desc: "Fried momo in spicy garlic sauce.", price: 250, available: false },
+
+  { id: 11, category: "main", name: "Dal Bhat Set", desc: "Rice, lentil soup and vegetables.", price: 280, available: true },
+  { id: 12, category: "main", name: "Chicken Sekuwa Set", desc: "Grilled chicken with beaten rice.", price: 380, available: true },
+  { id: 13, category: "main", name: "Thakali Set", desc: "Signature platter with six sides.", price: 420, available: true },
+  { id: 14, category: "main", name: "Vegetable Fried Rice", desc: "Rice tossed with vegetables.", price: 240, available: true },
+  { id: 15, category: "main", name: "Mutton Curry Set", desc: "Bone-in mutton curry with rice.", price: 460, available: false },
+
+  { id: 16, category: "newari", name: "Newari Khaja Set", desc: "Beaten rice, choila and bara platter.", price: 350, available: true },
+  { id: 17, category: "newari", name: "Chicken Choila", desc: "Grilled chicken tossed in spices.", price: 300, available: true },
+  { id: 18, category: "newari", name: "Bara", desc: "Lentil patty topped with fried egg.", price: 190, available: true },
+  { id: 19, category: "newari", name: "Sanyakhuna", desc: "Traditional buffalo trotter dish.", price: 320, available: false },
+  { id: 20, category: "newari", name: "Yomari", desc: "Sweet dumpling with molasses.", price: 160, available: true },
+
+  { id: 21, category: "snacks", name: "Chatpate", desc: "Puffed rice with tangy spices.", price: 120, available: true },
+  { id: 22, category: "snacks", name: "Pani Puri", desc: "Crisp puris with spiced water.", price: 130, available: true },
+  { id: 23, category: "snacks", name: "Aloo Chop", desc: "Fried spiced potato patty.", price: 110, available: true },
+  { id: 24, category: "snacks", name: "Samosa (2 pcs)", desc: "Fried pastry with potato filling.", price: 100, available: true },
+  { id: 25, category: "snacks", name: "Buff Chukauni Chips", desc: "Potato chips with spiced buff mince.", price: 220, available: false },
+
+  { id: 26, category: "soups", name: "Thukpa", desc: "Noodle soup with chicken broth.", price: 260, available: true },
+  { id: 27, category: "soups", name: "Thenthuk", desc: "Torn dough squares in soup.", price: 250, available: true },
+  { id: 28, category: "soups", name: "Chicken Corn Soup", desc: "Shredded chicken and sweet corn.", price: 200, available: true },
+  { id: 29, category: "soups", name: "Gundruk Soup", desc: "Fermented greens in clear broth.", price: 180, available: true },
+  { id: 30, category: "soups", name: "Mushroom Soup", desc: "Creamy mushroom soup.", price: 210, available: false },
+
+  { id: 31, category: "salads", name: "Cucumber Salad", desc: "Cucumber with timur dressing.", price: 140, available: true },
+  { id: 32, category: "salads", name: "Sprouted Bean Salad", desc: "Mixed beans with lemon.", price: 150, available: true },
+  { id: 33, category: "salads", name: "Roasted Soybean", desc: "Roasted soybeans with garlic.", price: 130, available: true },
+  { id: 34, category: "salads", name: "Green Salad", desc: "Seasonal greens with vinaigrette.", price: 160, available: true },
+  { id: 35, category: "salads", name: "Pickled Radish", desc: "Radish pickled with mustard oil.", price: 90, available: false },
+
+  { id: 36, category: "hotdrinks", name: "Masala Chiya", desc: "Milk tea with cardamom and ginger.", price: 60, available: true },
+  { id: 37, category: "hotdrinks", name: "Black Coffee", desc: "Freshly brewed hill coffee.", price: 90, available: true },
+  { id: 38, category: "hotdrinks", name: "Herbal Tea", desc: "Caffeine-free mountain herb blend.", price: 110, available: true },
+  { id: 39, category: "hotdrinks", name: "Lemon Honey Ginger", desc: "Warm lemon and ginger infusion.", price: 100, available: true },
+  { id: 40, category: "hotdrinks", name: "Cappuccino", desc: "Espresso with steamed milk foam.", price: 160, available: false },
+
+  { id: 41, category: "colddrinks", name: "Sweet Lassi", desc: "Chilled sweetened yoghurt drink.", price: 140, available: true },
+  { id: 42, category: "colddrinks", name: "Iced Lemon Tea", desc: "Chilled tea with lemon and mint.", price: 130, available: true },
+  { id: 43, category: "colddrinks", name: "Cold Coffee", desc: "Blended iced coffee with cream.", price: 170, available: true },
+  { id: 44, category: "colddrinks", name: "Fresh Lime Soda", desc: "Sparkling soda with fresh lime.", price: 120, available: true },
+  { id: 45, category: "colddrinks", name: "Mango Shake", desc: "Mango blended with milk.", price: 190, available: false },
+
+  { id: 46, category: "desserts", name: "Juju Dhau", desc: "Bhaktapur-style set yoghurt.", price: 150, available: true },
+  { id: 47, category: "desserts", name: "Sel Roti with Rabri", desc: "Rice bread with sweet milk.", price: 180, available: true },
+  { id: 48, category: "desserts", name: "Malpuwa", desc: "Sweet pancake in sugar syrup.", price: 140, available: true },
+  { id: 49, category: "desserts", name: "Gulab Jamun (2 pcs)", desc: "Milk dumplings in rose syrup.", price: 120, available: true },
+  { id: 50, category: "desserts", name: "Kheer", desc: "Rice pudding with cardamom.", price: 150, available: false },
+];
+
+/* ---------- State ---------- */
+
+let activeCategory = "all";
+let searchTerm = "";
+let cart = {}; // { itemId: quantity }
+
+/* ---------- DOM refs ---------- */
+
+const categoryFilterEl = document.getElementById("category-filter");
+const menuGridEl = document.getElementById("menu-grid");
+const searchInputEl = document.getElementById("search-input");
+const noResultsEl = document.getElementById("no-results");
+const themeSelectEl = document.getElementById("theme-select");
+const modeToggleEl = document.getElementById("mode-toggle");
+
+const modalOverlayEl = document.getElementById("modal-overlay");
+const modalCloseEl = document.getElementById("modal-close");
+const modalImageEl = document.getElementById("modal-image");
+const modalCategoryEl = document.getElementById("modal-category");
+const modalNameEl = document.getElementById("modal-name");
+const modalDescEl = document.getElementById("modal-desc");
+const modalPriceEl = document.getElementById("modal-price");
+const modalStatusEl = document.getElementById("modal-status");
+const modalQtyValueEl = document.getElementById("modal-qty-value");
+const modalQtyMinusEl = document.getElementById("modal-qty-minus");
+const modalQtyPlusEl = document.getElementById("modal-qty-plus");
+
+const orderBarEl = document.getElementById("order-bar");
+const orderBarCountEl = document.getElementById("order-bar-count");
+const orderBarTotalEl = document.getElementById("order-bar-total");
+const orderBarBtnEl = document.getElementById("order-bar-btn");
+
+const orderModalOverlayEl = document.getElementById("order-modal-overlay");
+const orderModalCloseEl = document.getElementById("order-modal-close");
+const orderListEl = document.getElementById("order-list");
+const orderEmptyEl = document.getElementById("order-empty");
+const orderGrandTotalEl = document.getElementById("order-grand-total");
+const orderClearBtnEl = document.getElementById("order-clear-btn");
+
+let modalCurrentItemId = null;
+
+/* ---------- Helper functions ---------- */
+
+function getCategoryLabel(catId) {
+  const found = categories.find((c) => c.id === catId);
+  return found ? found.label : catId;
+}
+
+function getCategoryIcon(catId) {
+  return ICONS[catId] || ICONS["main"];
+}
+
+/* ---------- Cart functions ---------- */
+
+function getQty(id) {
+  return cart[id] || 0;
+}
+
+function setQty(id, qty) {
+  const item = menuItems.find((i) => i.id === id);
+  if (!item || !item.available) return;
+
+  if (qty <= 0) {
+    delete cart[id];
+  } else {
+    cart[id] = qty;
+  }
+
+  updateQtyUI(id);
+  updateOrderBar();
+}
+
+function changeQty(id, delta) {
+  setQty(id, getQty(id) + delta);
+}
+
+function updateQtyUI(id) {
+  const qty = getQty(id);
+
+  const cardQtyEl = document.getElementById("qty-" + id);
+  if (cardQtyEl) cardQtyEl.textContent = qty;
+
+  if (modalCurrentItemId === id && modalQtyValueEl) {
+    modalQtyValueEl.textContent = qty;
+  }
+}
+
+function getCartTotal() {
+  let total = 0;
+  Object.keys(cart).forEach((id) => {
+    const item = menuItems.find((i) => i.id === Number(id));
+    if (item) total += item.price * cart[id];
+  });
+  return total;
+}
+
+function getCartCount() {
+  return Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+}
+
+function updateOrderBar() {
+  const count = getCartCount();
+  const total = getCartTotal();
+
+  if (count === 0) {
+    orderBarEl.hidden = true;
+    return;
+  }
+
+  orderBarEl.hidden = false;
+  orderBarCountEl.textContent = count + (count === 1 ? " item" : " items");
+  orderBarTotalEl.textContent = "Rs. " + total;
+}
+
+/* ---------- Render category buttons ---------- */
+
+function renderCategories() {
+  let html = `<button class="cat-btn active" data-category="all">All</button>`;
+
+  categories.forEach((cat) => {
+    html += `<button class="cat-btn" data-category="${cat.id}">${cat.label}</button>`;
+  });
+
+  categoryFilterEl.innerHTML = html;
+
+  const buttons = categoryFilterEl.querySelectorAll(".cat-btn");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      activeCategory = btn.dataset.category;
+
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      renderMenu();
+    });
+  });
+}
+
+/* ---------- Filter items ---------- */
+
+function getFilteredItems() {
+  return menuItems.filter((item) => {
+    const matchesCategory = activeCategory === "all" || item.category === activeCategory;
+    const matchesSearch =
+      searchTerm === "" || item.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+}
+
+/* ---------- Render menu cards ---------- */
+
+function renderMenu() {
+  const items = getFilteredItems();
+
+  if (items.length === 0) {
+    menuGridEl.innerHTML = "";
+    noResultsEl.hidden = false;
+    return;
+  }
+  noResultsEl.hidden = true;
+
+  let html = "";
+  items.forEach((item) => {
+    const qty = getQty(item.id);
+    html += `
+      <div class="menu-card" data-id="${item.id}">
+        <img src="${getCategoryIcon(item.category)}" alt="${item.name}">
+        <div class="menu-card-body">
+          <p class="menu-card-cat">${getCategoryLabel(item.category)}</p>
+          <h3>${item.name}</h3>
+          <p>${item.desc}</p>
           <div class="menu-card-footer">
-            <button class="qty-btn" onclick="change('${item.id}', -1)">−</button>
-            <span class="qty-display" id="qty-${item.id}">0</span>
-            <button class="qty-btn" onclick="change('${item.id}', 1)">+</button>
+            <span class="price">Rs. ${item.price}</span>
+            <span class="status ${item.available ? "available" : "unavailable"}">
+              ${item.available ? "Available" : "Sold Out"}
+            </span>
           </div>
+          ${item.available ? `
+          <div class="qty-row" data-id="${item.id}">
+            <button class="qty-btn qty-minus" data-id="${item.id}" type="button" aria-label="Decrease quantity">−</button>
+            <span class="qty-value" id="qty-${item.id}">${qty}</span>
+            <button class="qty-btn qty-plus" data-id="${item.id}" type="button" aria-label="Increase quantity">+</button>
+          </div>` : ""}
         </div>
-      `).join('');
-    }
- 
-    renderGrid(coffees, 'coffees-grid');
-    renderGrid(food, 'food-grid');
-  </script>
- 
- 
- <section class="about">
-  <span>☕</span>
-  <h1>About Liceria Coffee Shop</h1>
-  <p>We're a small coffee shop that believes in simple things done well — good beans, warm bread, and a seat that's yours for as long as you need it.</p>
-  <p>Every cup is made with care, right here, every day. No rush, no fuss — just coffee made the way it should be.</p>
-  <p class="sign">Come in, sit down, stay a while.</p>
-</section><br>
- <div class="FORM">
-<form id="contactForm">
-  <h2>Contact Us</h2>
- 
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" required>
- 
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" required>
- 
-  <label for="description">Description</label>
-  <textarea id="description" name="description" required></textarea>
- 
-  <div class="buttons">
-    <button type="submit" class="submit">Submit</button>
-    <button type="reset" class="cancel">Cancel</button>
-  </div>
-</form>
-</div>
- 
-<footer>
-  <p>📍 Birtamode,Jhapa</p>
-  <p>📞 phone: <a href="tel:9800233322">9800233322</a></p>
-   <p>✉️ Email: <a href="mailto:liceriacafe2@gmail.com">liceriacafe2@gmail.com</a></p>
- 
-   <p class="copyright">&copy; 2026 Liceria Cafe. All rights reserved.</p>
-</footer>
- </body>
- </html>
+      </div>
+    `;
+  });
+
+  menuGridEl.innerHTML = html;
+}
+
+/* Event delegation: card click opens modal, qty buttons change quantity */
+menuGridEl.addEventListener("click", function (e) {
+  const minusBtn = e.target.closest(".qty-minus");
+  const plusBtn = e.target.closest(".qty-plus");
+
+  if (minusBtn) {
+    e.stopPropagation();
+    changeQty(Number(minusBtn.dataset.id), -1);
+    return;
+  }
+  if (plusBtn) {
+    e.stopPropagation();
+    changeQty(Number(plusBtn.dataset.id), 1);
+    return;
+  }
+
+  const card = e.target.closest(".menu-card");
+  if (card) {
+    openModal(Number(card.dataset.id));
+  }
+});
+
+/* ---------- Search ---------- */
+
+searchInputEl.addEventListener("input", function (e) {
+  searchTerm = e.target.value;
+  renderMenu();
+});
+
+/* ---------- Modal ---------- */
+
+function openModal(id) {
+  const item = menuItems.find((i) => i.id === id);
+  if (!item) return;
+
+  modalCurrentItemId = id;
+
+  modalImageEl.src = getCategoryIcon(item.category);
+  modalImageEl.alt = item.name;
+  modalCategoryEl.textContent = getCategoryLabel(item.category);
+  modalNameEl.textContent = item.name;
+  modalDescEl.textContent = item.desc;
+  modalPriceEl.textContent = "Rs. " + item.price;
+  modalStatusEl.textContent = item.available ? "Available" : "Sold Out";
+  modalStatusEl.className = "modal-status " + (item.available ? "available" : "unavailable");
+  modalQtyValueEl.textContent = getQty(id);
+
+  const modalQtyRowEl = document.getElementById("modal-qty-row");
+  modalQtyRowEl.style.display = item.available ? "flex" : "none";
+
+  modalOverlayEl.hidden = false;
+  modalOverlayEl.style.display = "flex";
+}
+
+function closeModal() {
+  modalOverlayEl.hidden = true;
+  modalOverlayEl.style.display = "none";
+  modalCurrentItemId = null;
+}
+
+modalCloseEl.addEventListener("click", closeModal);
+modalOverlayEl.addEventListener("click", function (e) {
+  if (e.target === modalOverlayEl) closeModal();
+});
+
+modalQtyMinusEl.addEventListener("click", function () {
+  if (modalCurrentItemId !== null) changeQty(modalCurrentItemId, -1);
+});
+modalQtyPlusEl.addEventListener("click", function () {
+  if (modalCurrentItemId !== null) changeQty(modalCurrentItemId, 1);
+});
+
+/* ---------- Theme switch ---------- */
+
+themeSelectEl.addEventListener("change", function (e) {
+  document.body.setAttribute("data-theme", e.target.value);
+});
+
+/* ---------- Light / Dark mode ---------- */
+
+modeToggleEl.addEventListener("click", function () {
+  const current = document.body.getAttribute("data-mode");
+  const next = current === "dark" ? "light" : "dark";
+  document.body.setAttribute("data-mode", next);
+  modeToggleEl.textContent = next === "dark" ? "☀ Light Mode" : "🌙 Dark Mode";
+});
+
+/* ---------- Order summary modal ---------- */
+
+function renderOrderList() {
+  const ids = Object.keys(cart);
+
+  if (ids.length === 0) {
+    orderListEl.innerHTML = "";
+    orderEmptyEl.hidden = false;
+    orderGrandTotalEl.textContent = "Rs. 0";
+    return;
+  }
+  orderEmptyEl.hidden = true;
+
+  let html = "";
+  ids.forEach((idStr) => {
+    const id = Number(idStr);
+    const item = menuItems.find((i) => i.id === id);
+    if (!item) return;
+    const qty = cart[id];
+    const lineTotal = item.price * qty;
+
+    html += `
+      <div class="order-line">
+        <img src="${getCategoryIcon(item.category)}" alt="${item.name}" class="order-line-img">
+        <div class="order-line-body">
+          <p class="order-line-name">${item.name}</p>
+          <p class="order-line-price">Rs. ${item.price} x ${qty} = Rs. ${lineTotal}</p>
+        </div>
+        <div class="qty-row">
+          <button class="qty-btn qty-minus" data-id="${id}" type="button" aria-label="Decrease quantity">−</button>
+          <span class="qty-value">${qty}</span>
+          <button class="qty-btn qty-plus" data-id="${id}" type="button" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+    `;
+  });
+
+  orderListEl.innerHTML = html;
+  orderGrandTotalEl.textContent = "Rs. " + getCartTotal();
+}
+
+orderListEl.addEventListener("click", function (e) {
+  const minusBtn = e.target.closest(".qty-minus");
+  const plusBtn = e.target.closest(".qty-plus");
+
+  if (minusBtn) {
+    changeQty(Number(minusBtn.dataset.id), -1);
+    renderOrderList();
+  }
+  if (plusBtn) {
+    changeQty(Number(plusBtn.dataset.id), 1);
+    renderOrderList();
+  }
+});
+
+function openOrderModal() {
+  renderOrderList();
+  orderModalOverlayEl.hidden = false;
+  orderModalOverlayEl.style.display = "flex";
+}
+
+function closeOrderModal() {
+  orderModalOverlayEl.hidden = true;
+  orderModalOverlayEl.style.display = "none";
+}
+
+orderBarBtnEl.addEventListener("click", openOrderModal);
+orderModalCloseEl.addEventListener("click", closeOrderModal);
+orderModalOverlayEl.addEventListener("click", function (e) {
+  if (e.target === orderModalOverlayEl) closeOrderModal();
+});
+
+orderClearBtnEl.addEventListener("click", function () {
+  cart = {};
+  document.querySelectorAll(".qty-value").forEach((el) => {
+    if (el.id && el.id.startsWith("qty-")) el.textContent = "0";
+  });
+  if (modalQtyValueEl) modalQtyValueEl.textContent = "0";
+  updateOrderBar();
+  renderOrderList();
+});
+
+/* ---------- Init ---------- */
+
+renderCategories();
+renderMenu();
+
+</script>
+</body>
+</html>

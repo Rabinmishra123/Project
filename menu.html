@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chiya Adda - Digital Menu</title>
+<link rel="stylesheet" href="menu.css">
+<link rel="stylesheet" href="menu.js">
+<body data-theme="theme1" data-mode="light">
+ 
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="images/logo.svg" alt="Chiya Adda logo" class="logo">
+        <h1 class="site-title">Chiya Adda</h1>
+      </div>
+ 
+      <nav class="nav">
+        <select id="theme-select" class="theme-select" aria-label="Choose theme">
+          <option value="theme1">Theme 1</option>
+          <option value="theme2">Theme 2</option>
+          <option value="theme3">Theme 3</option>
+        </select>
+ 
+        <button id="mode-toggle" class="mode-toggle" type="button">🌙 Dark Mode</button>
+      </nav>
+    </div>
+  </header>
+ 
+  <section class="welcome">
+    <h2>Welcome to Chiya Adda</h2>
+    <p>A small tea house and kitchen in Kathmandu. Browse our menu below.</p>
+  </section>
+ 
+  <section class="controls">
+    <input type="search" id="search-input" class="search-box" placeholder="Search menu items...">
+ 
+    <div class="categories" id="category-filter">
+      <!-- category buttons added by script.js -->
+    </div>
+  </section>
+ 
+  <main>
+    <div class="menu-grid" id="menu-grid">
+      <!-- menu items added by script.js -->
+    </div>
+    <p class="no-results" id="no-results" hidden>No items found.</p>
+  </main>
+ 
+  <footer class="footer">
+    <p>Chiya Adda, Kathmandu &middot; Open daily 6 AM - 9 PM</p>
+  </footer>
+ 
+  <!-- Item Detail Modal -->
+  <div class="modal-overlay" id="modal-overlay" hidden style="display:none;">
+    <div class="modal">
+      <button class="modal-close" id="modal-close" type="button">✕</button>
+      <img src="" alt="" id="modal-image" class="modal-image">
+      <p class="modal-category" id="modal-category"></p>
+      <h3 id="modal-name"></h3>
+      <p id="modal-desc"></p>
+      <p class="modal-price" id="modal-price"></p>
+      <p class="modal-status" id="modal-status"></p>
+    </div>
+  </div>
+
+</body>
+</html>
